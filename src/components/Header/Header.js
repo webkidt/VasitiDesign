@@ -2,6 +2,7 @@ import { Typography, Grid, Paper, useMediaQuery } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Navigation from '../Navigation/Navigation';
+// import SingleTestimonyHero from '../SingleTestimonyHero/SingleTestimonyHero';
 import TestimonialImageDesktiop from '../../assets/img/testimonial-desktop.png';
 import TestimonialImageMobile from '../../assets/img/testimonial-mobile.png';
 
@@ -46,13 +47,18 @@ const useStyles = makeStyles(theme => ({
     }
   },
   testimonialImage: {
-    height: '506px',
-    width: '477px',
+    // height: '506px',
+    // width: '477px',
     marginLeft: theme.spacing(2),
+    paddingBottom: '0',
+    '& img': {
+      marginBottom: '-3px',
+      paddingBottom: '0'
+    },
     // backgroundImage: `url(${TestimonialImageDesktiop})`,
     [theme.breakpoints.up('md')]: {
-      width: '536px',
-      height: '568px',
+      // width: '536px',
+      // height: '568px',
       marginTop: theme.spacing(4),
       marginLeft: '0',
     },
@@ -72,7 +78,7 @@ function Header() {
   return (
     <div>
       <Navigation />
-      <Grid container justify='center'>
+      <Grid container>
         <Grid item xs={12} md={6} className={classes.heroTextBox}>
           <Typography className={classes.heroTextBig}>
             Amazing Experiences from Our Wonderful Customers
@@ -83,11 +89,13 @@ function Header() {
           </Typography>
         </Grid>
         <Grid item xs={12} md={6}>
-          {/* <Paper className={classes.testimonialImage} /> */}
           <Paper className={classes.testimonialImage} elevation={0}>
             {TestimonialImage}
           </Paper>
         </Grid>
+        {/* <Grid item xs={12}>
+          <Paper><Typography>Hello</Typography></Paper>
+        </Grid> */}
       </Grid>
     </div>
   );
