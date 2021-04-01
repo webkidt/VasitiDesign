@@ -1,4 +1,4 @@
-import { Typography, Grid, Paper, Box, useMediaQuery } from '@material-ui/core';
+import { Typography, Grid, Box, useMediaQuery } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Navigation from '../Navigation/Navigation';
@@ -8,10 +8,11 @@ import TestimonialImageMobile from '../../assets/img/testimonial-mobile.png';
 
 const useStyles = makeStyles(theme => ({
   textContainer: {
-    marginTop: theme.spacing(12),
+    marginTop: theme.spacing(8),
     // paddingTop: theme.spacing(8),
     // paddingLeft: theme.spacing(4),
     [theme.breakpoints.up('md')]: {
+      marginTop: theme.spacing(12),
       // paddingTop: theme.spacing(16),
       // paddingLeft: theme.spacing(16),
     },
@@ -44,7 +45,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       marginTop: theme.spacing(2),
       marginBottom: '0',
-    }
+    },
   },
   testimonialImage: {
     // height: '506px',
