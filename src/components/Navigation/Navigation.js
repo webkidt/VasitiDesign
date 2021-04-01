@@ -55,13 +55,17 @@ function Navigation() {
           </IconButton>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <Button color='inherit'>About Us</Button>
-            <Button color='inherit'>Stories</Button>
-            <Button color='inherit'>Contact</Button>
-            <Button color='inherit'>Log In</Button>
-            <Button color='primary' variant='contained'>
-              Sign Up
-            </Button>
+            <Grid container spacing={2}>
+              <Grid item><Button color='inherit'>About Us</Button></Grid>
+              <Grid item><Button color='inherit'>Stories</Button></Grid>
+              <Grid item><Button color='inherit'>Contact</Button></Grid>
+              <Grid item><Button color='inherit'>Log In</Button></Grid>
+              <Grid item>
+                <Button color='primary' variant='contained'>
+                  Sign Up
+                </Button>
+              </Grid>
+            </Grid>
           </div>
         </Toolbar>
       </Container>

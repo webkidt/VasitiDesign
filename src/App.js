@@ -1,7 +1,9 @@
-// import { makeStyles} from '@material-ui/core/styles';
+import { ThemeProvider} from '@material-ui/core/styles';
 
 import Header from './components/Header/Header';
-import SingleTestimonyHero from './components/SingleTestimonyHero/SingleTestimonyHero';
+import SingleCustomerHero from './components/SingleCustomerHero/SingleCustomerHero';
+import Stories from './components/Stories/Stories';
+import theme from './theme/theme';
 
 // const useStyles = makeStyles(theme => ({
 //   root: {
@@ -15,10 +17,11 @@ import SingleTestimonyHero from './components/SingleTestimonyHero/SingleTestimon
 function App() {
   // const classes = useStyles();
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <Header/>
-      <SingleTestimonyHero />
-    </div>
+      <SingleCustomerHero vendor />
+      {/* <Stories /> */}
+    </ThemeProvider>
   );
 }
 
