@@ -27,12 +27,12 @@ const useStyles = makeStyles(theme => ({
     fontFamily: 'Inter',
   },
   text: {
-    marginTop: theme.spacing(),
+    marginTop: theme.spacing(2),
     lineHeight: '24px',
     color: '#474747',
     fontFamily: 'Inter',
-    [theme.breakpoints.down('md')]: {
-      // marginRight: theme.spacing(4),
+    [theme.breakpoints.up('md')]: {
+      width: '80%',
     },
   },
 }));
@@ -44,38 +44,36 @@ function Story(props) {
   const isDesktop = useMediaQuery('(min-width: 960px)');
   return (
     <Grid item xs={12} md={4}>
-      <Box m='auto' width='80%'>
-        <Box>
-          <Avatar className={classes.large} src={Profile} />
-          <Typography variant='h6' className={classes.name}>
-            {props.story.name}
-          </Typography>
-          <Box
-            component='div'
-            display='inline'
-            marginRight={2}
-            className={classes.location}
-            fontSize={15}
-            fontWeight={500}
-          >
-            {props.story.location}
-          </Box>
-          <Box component='div' display='inline'>
-            <Chip
-              className={classes.status}
-              size='small'
-              label={props.story.status ? 'CUSTOMER' : 'VENDOR'}
-              style={{ backgroundColor: statusBackgroundColor, color: statusColor }}
-            />
-          </Box>
-          <Typography variant={isDesktop ? 'body2' : 'body1'} className={classes.text}>
-            Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt qui esse
-            pariatur duis deserunt mollit dolore cillum minim tempor enim. Elit aute irure
-            tempor cupidatat incididunt sint deserunt ut voluptate aute id deserunt nisi.
-            Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt qui esse
-            pariatur duis deserunt mollit dolore cillum minim tempor enim.
-          </Typography>
+      <Box m='auto' width='100%'>
+        <Avatar className={classes.large} src={Profile} />
+        <Typography variant='h6' className={classes.name}>
+          {props.story.name}
+        </Typography>
+        <Box
+          component='div'
+          display='inline'
+          marginRight={2}
+          className={classes.location}
+          fontSize={15}
+          fontWeight={500}
+        >
+          {props.story.location}
         </Box>
+        <Box component='div' display='inline'>
+          <Chip
+            className={classes.status}
+            size='small'
+            label={props.story.status ? 'CUSTOMER' : 'VENDOR'}
+            style={{ backgroundColor: statusBackgroundColor, color: statusColor }}
+          />
+        </Box>
+        <Typography variant={isDesktop ? 'body2' : 'body1'} className={classes.text}>
+          Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt qui esse
+          pariatur duis deserunt mollit dolore cillum minim tempor enim. Elit aute irure
+          tempor cupidatat incididunt sint deserunt ut voluptate aute id deserunt nisi.
+          Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt qui esse
+          pariatur duis deserunt mollit dolore cillum minim tempor enim.
+        </Typography>
       </Box>
     </Grid>
   );

@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Grid, useMediaQuery } from '@material-ui/core';
+import { Grid, Box, useTheme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Story from '../Story/Story';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    marginTop: theme.spacing(4),
     flexGrow: 1,
+    overflow: 'hidden',
   },
 }));
 
 function Stories() {
   const [stories, setStories] = useState([]);
   const classes = useStyles();
-  const isDesktop = useMediaQuery('(min-width: 960px)');
+  const theme = useTheme();
 
   useEffect(() => {
     getStories();
@@ -34,13 +34,15 @@ function Stories() {
   };
 
   return (
-    <Container>
-      <Grid container className={classes.root} spacing={isDesktop ? 6 : 1}>
-        {stories.map(story => {
-          return <Story key={story.id} story={story} />;
-        })}
-      </Grid>
-    </Container>
+    <div className={classes.root}>
+      <Box m='auto' width='80%' py={theme.spacing()}>
+        <Grid container spacing={6}>
+          {stories.map(story => {
+            return <Story key={story.id} story={story} />;
+          })}
+        </Grid>
+      </Box>
+    </div>
   );
 }
 

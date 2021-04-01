@@ -20,7 +20,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Header/>
       <SingleCustomerHero vendor />
-      {/* <Stories /> */}
+      <Stories />
     </ThemeProvider>
   );
 }

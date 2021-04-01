@@ -78,23 +78,24 @@ function SingleCustomerHero(props) {
         <img
           width='80%'
           src={LadiesSmilingImageDesktop}
-          className={classes.customerSmilingImg}
           alt=''
-          style={{}}
+          style={{ marginBottom: '-4px' }}
         />
       </Box>
     </Grid>
   );
 
   const mobileImage = (
-    <Box m='auto' width='100%'>
-      <img
-        width='100%'
-        src={LadiesSmilingImageMobile}
-        alt=''
-        className={classes.customerSmilingImg}
-      />
-    </Box>
+    <Grid item xs={12} md={6}>
+      <Box m='auto' width='100%'>
+        <img
+          width='100%'
+          src={LadiesSmilingImageMobile}
+          alt=''
+          style={{ marginBottom: '-4px' }}
+        />
+      </Box>
+    </Grid>
   );
 
   const customerTitleText = isDesktop ? (
@@ -130,9 +131,7 @@ function SingleCustomerHero(props) {
               </Box>
             </Box>
           </Grid>
-          <Grid item xs={12} md={6}>
-            {!isDesktop ? mobileImage : null}
-          </Grid>
+          {!isDesktop ? mobileImage : null}
         </Grid>
       </Box>
     </div>
