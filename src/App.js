@@ -2,6 +2,7 @@ import { ThemeProvider} from '@material-ui/core/styles';
 
 import Header from './components/Header/Header';
 import SingleCustomerHero from './components/SingleCustomerHero/SingleCustomerHero';
+import SingleVendorHero from './components/SingleVendorHero/SingleVendorHero';
 import Stories from './components/Stories/Stories';
 import theme from './theme/theme';
 
@@ -21,6 +22,7 @@ function App() {
       <Header/>
       <SingleCustomerHero vendor />
       <Stories />
+      <SingleVendorHero />
     </ThemeProvider>
   );
 }

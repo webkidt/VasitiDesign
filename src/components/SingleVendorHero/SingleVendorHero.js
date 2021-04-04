@@ -1,8 +1,17 @@
-import { Grid, Typography, useMediaQuery, Box, Chip, useTheme } from '@material-ui/core';
+import {
+  Grid,
+  Typography,
+  useMediaQuery,
+  Box,
+  Chip,
+  Avatar,
+  useTheme,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import LadiesSmilingImageMobile from '../../assets/img/black-beautiful-ladies-smiling-1.png';
-import LadiesSmilingImageDesktop from '../../assets/img/ladies-smiling-mobile.png';
+import SlantedOrange from '../../assets/img/slanted-orange.svg';
+import WomanShoppingBagDesktop from '../../assets/img/woman-shopping-bag-desktop.png';
+import WomanShoppingBagMobile from '../../assets/img/woman-shopping-bag-mobile.png';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -10,33 +19,36 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
   },
   container: {
-    backgroundColor: theme.background.dark,
+    backgroundColor: theme.background.light,
   },
-  detailsContainer: {},
+  large: {
+    width: theme.spacing(30),
+    height: theme.spacing(30),
+    margin: theme.spacing(8, 'auto', 0),
+  },
   titleText: {
-    color: theme.palette.common.white,
+    color: '#242120',
     fontFamily: 'Inter',
     fontSize: theme.spacing(3),
-    fontWeight: '600',
-    letterSpacing: '0.05em',
+    fontWeight: 'bold',
     lineHeight: '39px',
+    letterSpacing: '0.01em',
     [theme.breakpoints.up('md')]: {
       fontSize: theme.spacing(4),
-      fontWeight: 'bold',
-      letterSpacing: '0.01em',
     },
   },
   chip: {
     marginTop: theme.spacing(),
     textTransform: 'uppercase',
-    color: theme.palette.common['white'],
     borderRadius: '4px',
-    borderColor: 'rgba(255, 255, 255, 0.5)',
+    borderColor: 'rgba(255, 92, 0, 0.4)',
+    fontSize: theme.spacing(1.63),
+    fontFamily: 'Inter',
     fontWeight: '500',
     letterSpacing: '0.02em',
+    lineHeight: theme.spacing(2),
   },
   bodyText: {
-    color: theme.palette.common['white'],
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(4),
     fontFamily: 'Inter',
@@ -46,25 +58,23 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: '0.02em',
     [theme.breakpoints.up('md')]: {
       width: '90%',
-      // marginTop: theme.spacing(3),
       fontSize: theme.spacing(2.25),
     },
   },
   shareText: {
-    color: theme.palette.common.white,
     textTransform: 'uppercase',
     fontFamily: 'Inter',
-    fontSize: theme.spacing(1.8),
+    fontSize: theme.spacing(2),
     fontWeight: '500',
     lineHeight: '32px',
     letterSpacing: '0.2em',
-    [theme.breakpoints.up('md')]: {
-      fontSize: theme.spacing(2),
-    },
+    boxSizing: 'border-box',
+    margin: '0',
+    padding: '0',
   },
 }));
 
-function SingleCustomerHero(props) {
+function SingleVendorHero() {
   const classes = useStyles();
   const theme = useTheme();
   const isDesktop = useMediaQuery('(min-width: 960px)');
@@ -80,9 +90,9 @@ function SingleCustomerHero(props) {
       >
         <img
           width='80%'
-          src={LadiesSmilingImageDesktop}
+          src={WomanShoppingBagDesktop}
           alt=''
-          style={{ marginBottom: '-4px' }}
+          // style={{ marginBottom: '-4px' }}
         />
       </Box>
     </Grid>
@@ -90,36 +100,38 @@ function SingleCustomerHero(props) {
 
   const mobileImage = (
     <Grid item xs={12} md={6}>
-      <Box m='auto' width='100%'>
+      <Avatar className={classes.large} src={WomanShoppingBagMobile} />
+      {/* <Box >
         <img
           width='100%'
-          src={LadiesSmilingImageMobile}
+          src={WomanShoppingBagMobile}
           alt=''
-          style={{ marginBottom: '-4px' }}
+          // style={{ marginBottom: '-4px' }}
         />
-      </Box>
+      </Box> */}
     </Grid>
   );
 
   const customerTitleText = isDesktop ? (
-    <Typography className={classes.titleText}>Tolu & Joy's Experience</Typography>
+    <Typography className={classes.titleText}>Josiah's Experience</Typography>
   ) : (
-    <Typography className={classes.titleText}>Oby's Experience</Typography>
+    <Typography className={classes.titleText}>Victoria's Experience</Typography>
   );
 
   return (
     <div className={classes.root}>
       <Box className={classes.container}>
         <Grid container spacing={isDesktop ? 0 : theme.spacing()}>
-          {isDesktop ? desktopImage : null}
+          {!isDesktop ? mobileImage : null}
           <Grid item xs={12} md={6}>
-            <Box
-              m='auto'
-              width='80%'
-              marginTop={isDesktop ? theme.spacing(1.5) : theme.spacing()}
-            >
+            <Box m='auto' width='80%' marginTop={isDesktop ? theme.spacing(1.5) : 0}>
               {customerTitleText}
-              <Chip variant='outlined' label='Customer' className={classes.chip} />
+              <Chip
+                color='primary'
+                variant='outlined'
+                label='Vendor'
+                className={classes.chip}
+              />
               <Typography variant='body2' className={classes.bodyText}>
                 I had the best experience shopping with vasiti. Usability of the website
                 was great, very good customer service, an all round great experience. I
@@ -128,17 +140,20 @@ function SingleCustomerHero(props) {
                 all round great experience. I would definately be coming back!
               </Typography>
               <Box>
-                <Typography className={classes.shareText}>
+                <Typography color='primary' className={classes.shareText}>
                   Share your own story!
                 </Typography>
+                <Box mt='-8px' mb={theme.spacing()}>
+                  <img src={SlantedOrange} alt='' style={{ width: '279px' }} />
+                </Box>
               </Box>
             </Box>
           </Grid>
-          {!isDesktop ? mobileImage : null}
+          {isDesktop ? desktopImage : null}
         </Grid>
       </Box>
     </div>
   );
 }
 
-export default SingleCustomerHero;
+export default SingleVendorHero;
